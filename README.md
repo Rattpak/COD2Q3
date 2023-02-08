@@ -5,6 +5,7 @@ Barebones COD4/5 map file to Quake 3 map file format.
  - Does not support curves, entities, or terrain patches (yet)
  - Textures will be mapped at 0.5 on X, Y, and Z. Will be changed in future
  - Works with [TrenchBroom](https://trenchbroom.github.io/).
+ - Works with [Qodot](https://qodotplugin.github.io/)
  
 ## Usage
 To use the program, run the exe and copy/drag your .map file onto it.
