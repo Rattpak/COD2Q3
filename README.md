@@ -4,7 +4,6 @@ Barebones COD4/5 map file to Quake 3 map file format.
  - Only supports "lightmap_gray" (default). Press Shift + L in radiant to change if needed
  - Does not support prefabs (just stamp them in radiant)
  - Does not support curves, entities, or terrain patches (yet)
- - Textures will be mapped at 0.5 on X, Y, and Z. Will be changed in future
  - Works with [TrenchBroom](https://trenchbroom.github.io/).
  - Works with [Qodot](https://qodotplugin.github.io/)
  
