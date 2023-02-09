@@ -8,5 +8,5 @@ Barebones COD4/5 map file to Quake 3 map file format.
  - Works with [Qodot](https://qodotplugin.github.io/)
  
 ## Usage
-To use the program, run the exe and copy/drag your .map file onto it.
+To use the program, compile and run the code and copy/drag your .map file onto it.
 The output will be in the same directory as input file and will append _q3 at the end of the file name
