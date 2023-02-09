@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
+#include <vector>
 
 void convertMap(const std::string&);
 
@@ -38,27 +40,39 @@ void convertMap(const std::string& filepath) {
     }
 
     // Iterate through every line after the first 3
-    std::string data = " 0 0 0 0.5 0.5";
+    std::string waw_lightmap = "lightmap_gray";
     std::string line;
     char first;
     while (std::getline(input, line)) {
-        // Add your own code here to process each line
         first = line[1];
         if (first == '(') {
+            //remove everything after cod lightmap and the weird zero that serves no function
+            line = line.substr(0, line.find(waw_lightmap) - 3);
+            std::string data = ""; //all texture data from cod
             for (int i = 0; i < line.length(); ++i) {
                 if (isalpha(line[i])) {
                     int j = i;
                     while (j < line.length() && line[j] != ' ') {
                         ++j;
                     }
-                    // Remove everything after the next space
-                    line.erase(j, line.length() - 1);
-                    line += data;
+                    data = line.substr(j + 1, line.size());
+                    line = line.substr(0, j); //trim line so we can add modified texture data
                     break;
                 }
             }
+            std::stringstream ss;
+            ss << data;
+            std::vector<float> vecData;
+            std::string temp;
+            float num;
+            while (!ss.eof()) { //store all texture data in vector for manipulation
+                ss >> temp;
+                if (std::stringstream(temp) >> num) {
+                    vecData.push_back(num);
+                }
+            }
+            line = line + " " + std::to_string(vecData[2]) + " " + std::to_string(vecData[3]) + " " + std::to_string(vecData[4]) + " " + std::to_string(vecData[0]/512) + " " + std::to_string(vecData[1]/512);
         }
-
         // Write the modified line to the output file
         output << line << '\n';
     }
